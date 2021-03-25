@@ -1,28 +1,54 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: MainActivity(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MainActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Sample App",
-      theme:
-          ThemeData(accentColor: Colors.cyan, primarySwatch: Colors.lightBlue),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Sample App"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("First App"),
+      ),
+      body: Center(
+        child: Text(
+          "Center Text",
+          style: TextStyle(
+              color: Colors.white,
+              backgroundColor: Colors.blueAccent,
+              fontSize: 50.0),
         ),
-        body: Center(
-          child: Text(
-            "This is new Flutter App Project",
-            style: TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.25),
-          ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.all(0),
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("Vivek Kuvadiya"),
+              accountEmail: Text("vivekkuvadiya98@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                child: Text("V"),
+              ),
+            ),
+            ListTile(
+              onTap: () {},
+              leading: Image.network(
+                "https://i.stack.imgur.com/bUsqG.png",
+                width: 50,
+                height: 100,
+              ),
+              title: Text("Flutter"),
+              subtitle: Text("Learning Flutter"),
+              trailing: Icon(Icons.delete),
+            )
+          ],
         ),
       ),
     );
