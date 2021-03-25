@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: MyApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var text = "change me!";
+  var i = 0;
+
+  @override
+  void initState() {
+    // call when class create..
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // call when destroy
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Sample App",
-      theme:
-          ThemeData(accentColor: Colors.cyan, primarySwatch: Colors.lightBlue),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Sample App"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("StateFull Widgets"),
+      ),
+      body: Center(
+        child: Text(
+          text + " " + i.toString(),
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
-        body: Center(
-          child: Text(
-            "This is new Flutter App Project",
-            style: TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.25),
-          ),
-        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          i++;
+          setState(() {});
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
