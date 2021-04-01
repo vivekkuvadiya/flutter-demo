@@ -1,29 +1,54 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyApp(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
+
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() { 
+    super.initState();
+    debugPrint('start splash screen');
+    Timer(Duration(milliseconds: 2500), finished);
+  }
+
+  finished(){
+    debugPrint('Splash screen finished....');
+
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Sample App",
-      theme:
-          ThemeData(accentColor: Colors.cyan, primarySwatch: Colors.lightBlue),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Sample App"),
-        ),
-        body: Center(
-          child: Text(
-            "This is new Flutter App Project",
-            style: TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.25),
+    return Scaffold(
+      backgroundColor: Colors.cyan,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Splash Screeen",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold)),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }
